@@ -1,7 +1,7 @@
 #include <libssh/libssh.h>
 #include <libssh/sftp.h>
-#include "ssh_prot.h"
-#include "ssh_shell.h"
+#include "libs_ssh/ssh_prot.h"
+#include "libs_ssh/ssh_shell.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -13,7 +13,7 @@ pid_t pid;
 
 
 int verbosity = SSH_LOG_PROTOCOL;
-int port = 22;
+//int port = 22;
 
 
 command * cmd;
@@ -23,8 +23,8 @@ int main(int argc, char *argv[]) {
 
     int rc;
 
-    char *user_name = "guest";
-    char *pass_key = "12345678";
+    //char *user_name = "guest";
+    //char *pass_key = "12345678";
 
 
     cmd = (command *)malloc(sizeof(command));
@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
 
 
     if (authentication_pubkey(my_session, 
-                user_name, pass_key ) == SSH_AUTH_SUCCESS) {
+                cmd->username, cmd->passwd ) == SSH_AUTH_SUCCESS) {
 
         printf("giris basarili \n");
 
