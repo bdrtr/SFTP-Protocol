@@ -55,7 +55,7 @@ int authentication_pubkey(ssh_session session, char *username, char *passkey) {
     //önemli -> passkey ve passwd şifreniz aynı olarak varsayılır burda eğer 
     //passkey doğru değilse onu birde normal şifreli giriş için dener
 
-    rc = sh_userauth_publicskey_auto(session, username, passkey);
+    rc = ssh_userauth_publickey_auto(session, username, passkey);
     if (rc == SSH_AUTH_ERROR) {
         fprintf(stderr, "kimlik dogrulama basarisiz. %s\n",ssh_get_error(session));
         return SSH_AUTH_ERROR;
